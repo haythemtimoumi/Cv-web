@@ -1,0 +1,220 @@
+%-------------------------
+% Ultra-Modern Professional Resume
+% Enhanced UI with smooth design elements
+%-------------------------
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{verbatim}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{latexsym}
+\usepackage{marvosym}
+\usepackage[empty]{fullpage}
+\usepackage[hidelinks]{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage[english]{babel}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\input glyphtounicode
+\pdfgentounicode=1
+
+% Modern font selection
+\usepackage[sfdefault]{inter}
+\urlstyle{same}
+
+% Define modern color palette
+\definecolor{primaryColor}{RGB}{37, 99, 235}
+\definecolor{accentColor}{RGB}{59, 130, 246}
+\definecolor{textDark}{RGB}{31, 41, 55}
+\definecolor{textLight}{RGB}{107, 114, 128}
+\definecolor{sectionBg}{RGB}{243, 244, 246}
+
+%----------MARGIN OPTIONS-----------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\tabcolsep}{0in}
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{1in}
+\raggedbottom{}
+\raggedright{}
+\setlength{\footskip}{4.5pt}
+
+%--------SECTIONING COMMANDS---------
+\titleformat{\section}
+  {\color{primaryColor}\large\bfseries\uppercase}
+  {}
+  {0em}
+  {}
+  [\color{accentColor}\titlerule]
+
+\titlespacing*{\section}{0pt}{8pt}{8pt}
+
+%--------REDEFINITIONS----------------
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\ULdepth}{2pt}
+
+%--------CUSTOM COMMANDS--------------
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    \textcolor{textDark}{#1}
+  }\vspace{-2pt}
+}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}[rightmargin=0.1in, leftmargin=0.15in, itemsep=1pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+\newcommand{\resumeSectionType}[3]{
+  \item\begin{tabular*}{0.97\textwidth}[t]{
+    p{0.16\linewidth}p{0.01\linewidth}p{0.80\linewidth}
+  }
+    \textcolor{primaryColor}{\textbf{#1}} & \textcolor{textLight}{#2} & \textcolor{textDark}{#3}
+  \end{tabular*}\vspace{-3pt}
+}
+
+\newcommand{\resumeTrioHeading}[3]{
+  \item\small{
+    \begin{tabular*}{0.97\textwidth}[t]{
+      l@{\extracolsep{\fill}}c@{\extracolsep{\fill}}r
+    }
+      \textcolor{textDark}{\textbf{#1}} & \textcolor{textLight}{\textit{\small#2}} & \textcolor{accentColor}{\small#3}
+    \end{tabular*}
+  }\vspace{-1pt}
+}
+
+\newcommand{\resumeQuadHeading}[4]{
+  \item
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textcolor{textDark}{\textbf{#1}} & \textcolor{primaryColor}{\textbf{#2}} \\
+    \textcolor{textLight}{\textit{\small#3}} & \textcolor{textLight}{\textit{\small #4}} \\
+  \end{tabular*}\vspace{-3pt}
+}
+
+\newcommand{\resumeHeadingListStart}{
+  \begin{itemize}[leftmargin=0.15in, label={}]
+}
+\newcommand{\resumeHeadingListEnd}{\end{itemize}}
+
+% Skill badge command
+\newcommand{\skillBadge}[1]{
+  \tikz[baseline=(char.base)]{
+    \node[shape=rectangle, rounded corners=3pt, draw=accentColor!50, fill=accentColor!10, 
+          inner sep=3pt, minimum height=18pt] (char) {\small\textcolor{textDark}{#1}};
+  }
+}
+%-------------------------------------------
+
+
+%__________________RESUME____________________
+\begin{document}
+
+% Modern Header with visual elements
+\begin{center}
+  {\Huge\textcolor{primaryColor}{\textbf{Haythem Timoumi}}} \\[6pt]
+  {\large\textcolor{textLight}{\textbf{Full Stack Software Engineer}}} \\[8pt]
+  
+  \begin{tabular}{c c c c}
+    \textcolor{accentColor}{\faEnvelope} \href{mailto:haythem.timoumi@outlook.com}{\textcolor{textDark}{haythem.timoumi@outlook.com}} &
+    \textcolor{accentColor}{\faPhone} \href{tel:+21690224495}{\textcolor{textDark}{+216 90 224 495}} &
+    \textcolor{accentColor}{\faLinkedin} \href{https://www.linkedin.com/in/haythem-timoumi-152b9b34a/}{\textcolor{textDark}{LinkedIn}} &
+    \textcolor{accentColor}{\faGithub} \href{https://github.com/haythemtimoumi}{\textcolor{textDark}{GitHub}}
+  \end{tabular}
+\end{center}
+\vspace{-6pt}
+
+%-----------SUMMARY--------------------------
+\section{\faUser\ Professional Summary}
+\vspace{2pt}
+\textcolor{textDark}{
+Recent Computer Science graduate with hands-on experience as a freelance full-stack developer on Upwork. Specialized in building mobile applications with Flutter, web applications with React/Next.js, and automation solutions using Python and n8n. Proven ability to deliver diverse projects including web scraping systems, AI-powered applications, and end-to-end mobile solutions. Passionate about learning new technologies and solving complex problems through innovative software solutions.
+}
+\vspace{2pt}
+
+
+\section{\faCode\ Technical Skills}
+  \vspace{2pt}
+  \resumeHeadingListStart{}
+    \resumeSectionType{Languages}{:}{Python, JavaScript/Node.js, Dart/Flutter, SQL, TypeScript, HTML/CSS}
+    \resumeSectionType{Technologies}{:}{React, Next.js, Express.js, Docker, PostgreSQL, Firebase, n8n, Git}
+    \resumeSectionType{AI/ML}{:}{Scikit-learn, HuggingFace, Dialogflow, BeautifulSoup, Vosk}
+  \resumeHeadingListEnd{}
+  \vspace{2pt}
+
+
+%-----------EXPERIENCE--------------------------
+\section{\faBriefcase\ Professional Experience}
+  \vspace{2pt}
+  \resumeHeadingListStart{}
+    \resumeQuadHeading{Freelance Full-Stack Developer}{2023 -- Present}
+    {Upwork Platform}{Remote}
+    \resumeItemListStart{}
+      \resumeItem{\textcolor{textDark}{Delivered mobile apps, web scraping solutions, n8n automation workflows, and AI integrations for diverse clients}}
+      \resumeItem{\textcolor{textDark}{Built full-stack applications using Flutter, React, Next.js, Node.js, and Python with database integration}}
+    \resumeItemListEnd{}
+  \resumeHeadingListEnd{}
+  \vspace{2pt}
+
+%-----------PROJECTS--------------------------
+\section{\faLaptopCode\ Featured Projects}
+  \vspace{2pt}
+  \resumeHeadingListStart{}
+  
+    \resumeTrioHeading{Education Mobile App}{Flutter, Node.js, SQL Server, Dialogflow}{\href{https://github.com/haythemtimoumi/Education-mobile-app.git}{\uline{GitHub}}}
+    \resumeItemListStart{}
+      \resumeItem{Full-stack mobile app serving 500+ students with real-time attendance, academic records, and AI chatbot}
+      \resumeItem{Built RESTful API with Node.js integrated with SQL Server database (10,000+ records)}
+      \resumeItem{Implemented Dialogflow chatbot for automated student inquiries and third-party API integrations}
+    \resumeItemListEnd{}
+
+    \resumeTrioHeading{Stock Tracking Dashboard}{Next.js, TypeScript, Express.js, Python, PostgreSQL}{\href{https://github.com/haythemtimoumi/Dan-Project}{\uline{GitHub}}}
+    \resumeItemListStart{}
+      \resumeItem{Multi-source financial data system with Python web scraping engine and real-time analytics dashboard}
+      \resumeItem{Smart scoring algorithms with sentiment analysis, JWT authentication, and automated S3 backups}
+    \resumeItemListEnd{}
+
+    \resumeTrioHeading{AI Lead Generation System}{n8n, Python, HuggingFace, Telegram}{\href{https://github.com/haythemtimoumi/n8n-lead-gen}{\uline{GitHub}}}
+    \resumeItemListStart{}
+      \resumeItem{Automated n8n pipeline extracting LinkedIn contacts with Hunter.io email validation}
+      \resumeItem{AI-powered lead scoring using HuggingFace models with real-time Telegram notifications}
+    \resumeItemListEnd{}
+
+    \resumeTrioHeading{AI Car Analysis Bot}{Python, Docker, Scikit-learn, BeautifulSoup}{\href{https://github.com/haythemtimoumi/Ai_cars_telegram.git}{\uline{GitHub}}}
+    \resumeItemListStart{}
+      \resumeItem{ML pipeline scraping 5,000+ vehicles with Random Forest classifier (85\% accuracy) for price predictions}
+      \resumeItem{Telegram bot interface with Docker containerization for instant vehicle evaluations}
+    \resumeItemListEnd{}
+    
+  \resumeHeadingListEnd{}
+  \vspace{2pt}
+
+
+
+\section{\faGraduationCap\ Education}
+  \vspace{2pt}
+  \resumeHeadingListStart{}
+    \resumeQuadHeading{Engineering Degree in Computer Science}{2021 -- 2024}
+    {ESPRIT - Private Higher School of Engineering and Technology}{Ariana, Tunisia}
+    
+    \resumeQuadHeading{Bachelor of Science in Computer Science}{2018 -- 2021}
+    {ISIG - Higher Institute of Computer Science and Management}{Kairouan, Tunisia}
+  \resumeHeadingListEnd{}
+  \vspace{2pt}
+
+%-----------ADDITIONAL INFO--------------------------
+\section{\faGlobe\ Additional Information}
+  \vspace{2pt}
+  \resumeHeadingListStart{}
+    \resumeSectionType{Languages}{:}{Arabic (Native), English (Fluent), French (Intermediate)}
+  \resumeHeadingListEnd{}
+  \vspace{2pt}
+
+\end{document}
