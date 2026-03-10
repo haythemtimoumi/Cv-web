@@ -29,3 +29,4 @@ Server/node_modules
 Server/config.js
 # Vercel
 .vercel
+.env*.local
