@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Badge, Button, Spinner, Modal } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { BsGithub, BsStar, BsCodeSlash, BsArrowLeft, BsX } from "react-icons/bs";
@@ -123,7 +123,6 @@ function ProjectDetail() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageLoaded, setImageLoaded] = useState({});
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [defaultBranch, setDefaultBranch] = useState('main');
 
   useEffect(() => {
     let ticking = false;
@@ -149,8 +148,6 @@ function ProjectDetail() {
       const foundProject = projects.find(p => p.id === projectId);
       if (foundProject) {
         setProject(foundProject);
-        // Set default branch from repo data
-        setDefaultBranch(foundProject.mainRepo.default_branch || 'main');
         loadProjectContent(foundProject);
       } else {
         navigate("/project");
@@ -170,7 +167,6 @@ function ProjectDetail() {
 
         // Set the correct branch
         if (readmeData.branch) {
-          setDefaultBranch(readmeData.branch);
           console.log('Using branch:', readmeData.branch);
         }
 
