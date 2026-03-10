@@ -7,6 +7,17 @@ import { config } from '../config/config';
 
 // Use relative URLs for Vercel serverless functions
 const API_BASE = '/api';
+const GITHUB_API_BASE = 'https://api.github.com';
+
+/**
+ * Create headers for GitHub API requests (fallback for direct calls)
+ */
+const getHeaders = () => {
+  return {
+    'Accept': 'application/vnd.github.v3+json',
+    'User-Agent': 'Portfolio-App'
+  };
+};
 
 /**
  * Fetch GitHub user profile via serverless function
