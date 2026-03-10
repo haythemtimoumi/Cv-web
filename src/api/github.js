@@ -1,35 +1,25 @@
 /**
  * Advanced GitHub API Service
- * Handles fetching public + private repos, filtering by topics, and grouping multi-repo projects
+ * Uses Vercel serverless functions to keep tokens secure
  */
 
 import { config } from '../config/config';
 
-const GITHUB_API_BASE = 'https://api.github.com';
+// Use relative URLs for Vercel serverless functions
+const API_BASE = '/api';
 
 /**
- * Create headers for GitHub API requests
- * Token removed for security - only public data is accessed
- */
-const getHeaders = () => {
-  return {
-    'Accept': 'application/vnd.github.v3+json',
-  };
-};
-
-/**
- * Fetch GitHub user profile
+ * Fetch GitHub user profile via serverless function
  * @returns {Promise<Object>} User profile data
  */
 export const fetchUserProfile = async () => {
   try {
     const response = await fetch(
-      `${GITHUB_API_BASE}/users/${config.github.username}`,
-      { headers: getHeaders() }
+      `${API_BASE}/github-profile?username=${config.github.username}`
     );
     
     if (!response.ok) {
-      throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+      throw new Error(`API error: ${response.status} ${response.statusText}`);
     }
     
     return await response.json();
@@ -40,7 +30,7 @@ export const fetchUserProfile = async () => {
 };
 
 /**
- * Fetch public user repositories
+ * Fetch user repositories via serverless function
  * @returns {Promise<Array>} Array of all repository objects
  */
 export const fetchAllUserRepos = async () => {
@@ -49,15 +39,14 @@ export const fetchAllUserRepos = async () => {
     let page = 1;
     const perPage = 100;
     
-    // Fetch all pages of repositories (public only, no token needed)
+    // Fetch all pages of repositories
     while (true) {
       const response = await fetch(
-        `${GITHUB_API_BASE}/users/${config.github.username}/repos?per_page=${perPage}&page=${page}&sort=updated&type=owner`,
-        { headers: getHeaders() }
+        `${API_BASE}/github-repos?username=${config.github.username}&per_page=${perPage}&page=${page}`
       );
       
       if (!response.ok) {
-        throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+        throw new Error(`API error: ${response.status} ${response.statusText}`);
       }
       
       const repos = await response.json();
@@ -284,7 +273,7 @@ export const fetchUserStats = async () => {
 };
 
 /**
- * Fetch repository README content
+ * Fetch repository README content via serverless function
  * @param {string} owner - Repository owner
  * @param {string} repo - Repository name
  * @param {string} branch - Branch name (optional, will be detected from README response)
@@ -293,18 +282,18 @@ export const fetchUserStats = async () => {
 export const fetchRepoReadme = async (owner, repo, branch = null) => {
   try {
     const response = await fetch(
-      `${GITHUB_API_BASE}/repos/${owner}/${repo}/readme`,
-      { headers: getHeaders() }
+      `${API_BASE}/github-readme?owner=${owner}&repo=${repo}`
     );
     
     if (!response.ok) {
-      if (response.status === 404) {
-        return { content: "No README found for this repository.", images: [] };
-      }
-      throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+      throw new Error(`API error: ${response.status} ${response.statusText}`);
     }
     
     const data = await response.json();
+    
+    if (data.error) {
+      return { content: data.content || "Error loading README content.", images: [] };
+    }
     
     // Decode base64 content with proper UTF-8 handling
     const content = decodeURIComponent(escape(atob(data.content)));
@@ -312,7 +301,6 @@ export const fetchRepoReadme = async (owner, repo, branch = null) => {
     // Get branch from README URL if not provided
     if (!branch) {
       // Extract branch from the download_url or html_url
-      // Example: https://raw.githubusercontent.com/owner/repo/main/README.md
       const urlMatch = data.download_url?.match(/\/([^/]+)\/README\.md$/i);
       branch = urlMatch ? urlMatch[1] : 'main';
     }
