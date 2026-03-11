@@ -127,7 +127,9 @@
     \textcolor{accentColor}{\faPhone} \href{tel:+21690224495}{\textcolor{textDark}{+216 90 224 495}} &
     \textcolor{accentColor}{\faLinkedin} \href{https://www.linkedin.com/in/haythem-timoumi-152b9b34a/}{\textcolor{textDark}{LinkedIn}} &
     \textcolor{accentColor}{\faGithub} \href{https://github.com/haythemtimoumi}{\textcolor{textDark}{GitHub}}
-  \end{tabular}
+  \end{tabular} \\[4pt]
+  
+  \textcolor{accentColor}{\faGlobe} \href{https://cv-web-bay.vercel.app/}{\textcolor{textDark}{Portfolio: https://cv-web-bay.vercel.app/}}
 \end{center}
 \vspace{-6pt}
 
@@ -175,19 +177,19 @@ Recent Computer Science graduate with hands-on experience as a freelance full-st
       \resumeItem{Implemented Dialogflow chatbot for automated student inquiries and third-party API integrations}
     \resumeItemListEnd{}
 
-    \resumeTrioHeading{Stock Tracking Dashboard}{Next.js, TypeScript, Express.js, Python, PostgreSQL}{\href{https://github.com/haythemtimoumi/Dan-Project}{\uline{GitHub}}}
+    \resumeTrioHeading{Stock Tracking Dashboard}{Next.js, TypeScript, Express.js, Python, PostgreSQL}{\href{https://cv-web-bay.vercel.app/project/stock-dashboard}{\uline{Live Demo}}}
     \resumeItemListStart{}
       \resumeItem{Multi-source financial data system with Python web scraping engine and real-time analytics dashboard}
       \resumeItem{Smart scoring algorithms with sentiment analysis, JWT authentication, and automated S3 backups}
     \resumeItemListEnd{}
 
-    \resumeTrioHeading{AI Lead Generation System}{n8n, Python, HuggingFace, Telegram}{\href{https://github.com/haythemtimoumi/n8n-lead-gen}{\uline{GitHub}}}
+    \resumeTrioHeading{AI Lead Generation System}{n8n, Python, HuggingFace, Telegram}{\href{https://github.com/haythemtimoumi/Lead-Generation-Pipeline}{\uline{GitHub}}}
     \resumeItemListStart{}
       \resumeItem{Automated n8n pipeline extracting LinkedIn contacts with Hunter.io email validation}
       \resumeItem{AI-powered lead scoring using HuggingFace models with real-time Telegram notifications}
     \resumeItemListEnd{}
 
-    \resumeTrioHeading{AI Car Analysis Bot}{Python, Docker, Scikit-learn, BeautifulSoup}{\href{https://github.com/haythemtimoumi/Ai_cars_telegram.git}{\uline{GitHub}}}
+    \resumeTrioHeading{AI Car Analysis Bot}{Python, Docker, Scikit-learn, BeautifulSoup}{\href{https://github.com/haythemtimoumi/Ai_cars_telegram}{\uline{GitHub}}}
     \resumeItemListStart{}
       \resumeItem{ML pipeline scraping 5,000+ vehicles with Random Forest classifier (85\% accuracy) for price predictions}
       \resumeItem{Telegram bot interface with Docker containerization for instant vehicle evaluations}
